@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: demo-backend-api
+
+server:
+  port: 8081

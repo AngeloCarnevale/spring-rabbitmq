@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: demo-backend-worker
+
+server:
+  port: 9090
