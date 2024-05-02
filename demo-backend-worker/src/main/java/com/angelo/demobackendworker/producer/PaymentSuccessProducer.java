@@ -12,7 +12,7 @@ public class PaymentSuccessProducer {
     public void generateResponse (String message) {
         amqpTemplate.convertAndSend(
                 "payment-response-success-exchange",
-                "payment-response-success-route-key",
+                "payment-response-success-rout-key",
                 message
         );
     }

@@ -12,7 +12,7 @@ public class PaymentResponseErrorConsumer {
 
     @Autowired private PaymentFacade paymentFacade;
 
-    @RabbitListener(queues = {"payment-response-error"})
+    @RabbitListener(queues = {"payment-response-error-queue"})
     public void receive(@Payload Message message) {
         System.out.println("Message "+message);
         String payload = String.valueOf(message.getPayload());

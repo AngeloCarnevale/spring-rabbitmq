@@ -1,0 +1,126 @@
+{
+    "rabbit_version": "3.8.6",
+    "rabbitmq_version": "3.8.6",
+    "product_name": "RabbitMQ",
+    "product_version": "3.8.6",
+    "users": [
+      {
+        "name": "guest",
+        "password_hash": "czBqFsaIUk16385Ji1NQz+TLIyTtxZlYarQ4T9tU5xbOiMWI",
+        "hashing_algorithm": "rabbit_password_hashing_sha256",
+        "tags": "administrator"
+      }
+    ],
+    "vhosts": [
+      {
+        "name": "/"
+      }
+    ],
+    "permissions": [
+      {
+        "user": "guest",
+        "vhost": "/",
+        "configure": ".*",
+        "write": ".*",
+        "read": ".*"
+      }
+    ],
+    "topic_permissions": [],
+    "parameters": [],
+    "global_parameters": [
+      {
+        "name": "cluster_name",
+        "value": "rabbit@f0e281104b2e"
+      },
+      {
+        "name": "internal_cluster_id",
+        "value": "rabbitmq-cluster-id-9_icww8cD5V_6iDEjJmYUA"
+      }
+    ],
+    "policies": [],
+    "queues": [
+      {
+        "name": "payment-response-error-queue",
+        "vhost": "/",
+        "durable": true,
+        "auto_delete": false,
+        "arguments": {
+          "x-queue-type": "classic"
+        }
+      },
+      {
+        "name": "payment-request-queue",
+        "vhost": "/",
+        "durable": true,
+        "auto_delete": false,
+        "arguments": {
+          "x-queue-type": "classic"
+        }
+      },
+      {
+        "name": "payment-response-success-queue",
+        "vhost": "/",
+        "durable": true,
+        "auto_delete": false,
+        "arguments": {
+          "x-queue-type": "classic"
+        }
+      }
+    ],
+    "exchanges": [
+      {
+        "name": "payment-request-exchange",
+        "vhost": "/",
+        "type": "direct",
+        "durable": true,
+        "auto_delete": false,
+        "internal": false,
+        "arguments": {}
+      },
+      {
+        "name": "payment-response-success-exchange",
+        "vhost": "/",
+        "type": "direct",
+        "durable": true,
+        "auto_delete": false,
+        "internal": false,
+        "arguments": {}
+      },
+      {
+        "name": "payment-response-error-exchange",
+        "vhost": "/",
+        "type": "direct",
+        "durable": true,
+        "auto_delete": false,
+        "internal": false,
+        "arguments": {}
+      }
+    ],
+    "bindings": [
+      {
+        "source": "payment-request-exchange",
+        "vhost": "/",
+        "destination": "payment-request-queue",
+        "destination_type": "queue",
+        "routing_key": "payment-request-rout-key",
+        "arguments": {}
+      },
+      {
+        "source": "payment-response-error-exchange",
+        "vhost": "/",
+        "destination": "payment-response-error-queue",
+        "destination_type": "queue",
+        "routing_key": "payment-response-error-rout-key",
+        "arguments": {}
+      },
+      {
+        "source": "payment-response-success-exchange",
+        "vhost": "/",
+        "destination": "payment-response-success-queue",
+        "destination_type": "queue",
+        "routing_key": "payment-response-success-rout-key",
+        "arguments": {}
+      }
+    ]
+  }
+  

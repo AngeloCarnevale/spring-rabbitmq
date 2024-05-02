@@ -16,7 +16,7 @@ public class PaymentRequestProducer {
     public void integrate (PaymentDTO payment) throws JsonProcessingException {
         amqpTemplate.convertAndSend(
                 "payment-request-exchange",
-                "payment-request-route-key",
+                "payment-request-rout-key",
                 objectMapper.writeValueAsString(payment)
         );
     }
